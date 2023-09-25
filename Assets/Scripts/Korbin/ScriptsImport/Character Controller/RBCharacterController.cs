@@ -35,6 +35,12 @@ public class RBCharacterController : MonoBehaviour
     private Vector3 _goalVel;
     private RaycastHit _floatRayHit;
 
+    public int maxJumps = 1;
+    /// <summary>
+    /// Counts the number of times the player has jumped.
+    /// </summary>
+    private int _jumps;
+
     private Rigidbody _platform;
     private Transform _platformParent;
     void Awake()
@@ -55,6 +61,15 @@ public class RBCharacterController : MonoBehaviour
         //fix for camera angle.
         _unitGoal = new Vector3(_input.x, 0, _input.y);
 
+    }
+
+    public void Jump()
+    {
+        if (maxJumps > _jumps)
+        {
+            _rigidbody.AddForce(Vector3.up*10f,ForceMode.Impulse);
+            _jumps++;
+        }
     }
 
     void FixedUpdate()
@@ -116,7 +131,12 @@ public class RBCharacterController : MonoBehaviour
             {
                 otherVel = hitBody.GetPointVelocity(_floatRayHit.point);
             }
-
+            
+            //check ray distance for some jump threshold...
+            //reset the times jumped counter
+            _jumps = 0;
+            
+            
             float rayDirVel = Vector3.Dot(rayDir, vel);
             float otherDirVel = Vector3.Dot(rayDir, otherVel);
 

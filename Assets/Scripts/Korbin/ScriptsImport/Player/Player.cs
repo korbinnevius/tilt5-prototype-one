@@ -21,8 +21,12 @@ namespace Ship
 			_playerInteractionHandler = GetComponent<PlayerInteractionHandler>();
 			_characterController = GetComponent<RBCharacterController>();
 			_input = GetComponent<CharacterControllerInput>();
+
+			if (_playerInteractionHandler != null)
+			{
+				_playerInteractionHandler.SetPlayer(this);
+			}
 			
-			_playerInteractionHandler.SetPlayer(this);
 			_input.SetPlayer(this);
 		}
 		

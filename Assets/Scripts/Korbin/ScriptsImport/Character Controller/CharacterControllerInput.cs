@@ -17,6 +17,7 @@ namespace Character_Controller
 		public Vector3 WorldInputDirection { get; set; }
 
 		public TiltFive.Input.WandButton interactButton;
+		public TiltFive.Input.WandButton jumpButton;
 		private float _trigger;
 		[Range(0,1)]public float _triggerThreshold;
 		private bool _triggerPressed;
@@ -67,6 +68,7 @@ namespace Character_Controller
 				WorldInputDirection = tFiveInput;
 				_characterController.Move(tFiveInput);
 				
+				//Interaction
 				_trigger = TiltFive.Input.GetTrigger(_controllerIndex, TiltPlayerIndex);
 				if (_trigger > _triggerThreshold)
 				{
@@ -80,7 +82,12 @@ namespace Character_Controller
 				{
 					_triggerPressed = false;
 				}
-				
+
+				//jump
+				if (TiltFive.Input.GetButtonDown(jumpButton, _controllerIndex, TiltPlayerIndex))
+				{
+					_characterController.Jump();
+				}
 				
 				//alt
 				if (TiltFive.Input.GetButtonDown(interactButton,_controllerIndex,TiltPlayerIndex))
@@ -90,10 +97,15 @@ namespace Character_Controller
 			}
 			else
 			{
-				_characterController.Move(new Vector3(Input.GetAxis("Horizontal"), 0,Input.GetAxis("Vertical")));
-				if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
+				_characterController.Move(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
+				if (Input.GetKeyDown(KeyCode.E))
 				{
 					_interactionHandler.Interact();
+				}
+
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					_characterController.Jump();
 				}
 			}
 		}

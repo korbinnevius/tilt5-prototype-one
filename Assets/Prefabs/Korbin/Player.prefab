@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 1234914060461361928}
   - component: {fileID: 5528989695680870714}
   - component: {fileID: 1309426925561494175}
-  - component: {fileID: 9122894977964355045}
-  - component: {fileID: 5096523815136173922}
   - component: {fileID: 6951984662989655384}
-  - component: {fileID: 6066974472757957960}
+  - component: {fileID: 3550157566633217869}
+  - component: {fileID: 2409291356069288739}
+  - component: {fileID: 2652672412315886053}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -140,58 +140,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9122894977964355045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916862443643679833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3d276ebe4efea459505cd8838175ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 448
-  RideHeight: 0
-  groundCastDistance: 0
-  RideSpringForce: 0
-  RideSpringDamper: 0
-  UprightJointSpringStrength: 0
-  UprightJointSpringDamper: 0
-  maxSpeed: 3
-  acceleration: 2
-  accelerationFactorFromDot:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  maxAccelerationForce: 0
-  maxAccelerationForceFactorFromDot:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  forceScale: {x: 1, y: 0, z: 1}
---- !u!114 &5096523815136173922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916862443643679833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf3afb8ccf049de97fb988eab393f01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TiltPlayerIndex: 0
-  interactButton: 0
-  _triggerThreshold: 0
 --- !u!114 &6951984662989655384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +155,80 @@ MonoBehaviour:
   _zone: {fileID: 321625472737175576}
   _grabHandler: {fileID: 1081293343044783672}
   throwForce: 0.5
---- !u!114 &6066974472757957960
+--- !u!114 &3550157566633217869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916862443643679833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3d276ebe4efea459505cd8838175ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  RideHeight: 0.3
+  groundCastDistance: 1
+  RideSpringForce: 200
+  RideSpringDamper: 10
+  UprightJointSpringStrength: 40
+  UprightJointSpringDamper: 5
+  maxSpeed: 12
+  acceleration: 200
+  accelerationFactorFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAccelerationForce: 150
+  maxAccelerationForceFactorFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  forceScale: {x: 1, y: 0, z: 1}
+--- !u!114 &2409291356069288739
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,7 +240,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a7c685c9fa43969d4b7037d0c796f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUIColor: {r: 0, g: 0, b: 0, a: 0}
+  playerUIColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!114 &2652672412315886053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916862443643679833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cf3afb8ccf049de97fb988eab393f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TiltPlayerIndex: 0
+  interactButton: 0
+  _triggerThreshold: 0
 --- !u!1 &3862161505742401547
 GameObject:
   m_ObjectHideFlags: 0
